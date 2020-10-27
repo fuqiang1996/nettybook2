@@ -58,11 +58,9 @@ public class NettyServer {
 			ch.pipeline().addLast(
 				new NettyMessageDecoder(1024 * 1024, 4, 4));
 			ch.pipeline().addLast(new NettyMessageEncoder());
-			ch.pipeline().addLast("readTimeoutHandler",
-				new ReadTimeoutHandler(50));
+			ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
 			ch.pipeline().addLast(new LoginAuthRespHandler());
-			ch.pipeline().addLast("HeartBeatHandler",
-				new HeartBeatRespHandler());
+			ch.pipeline().addLast("HeartBeatHandler", new HeartBeatRespHandler());
 		    }
 		});
 
@@ -73,6 +71,6 @@ public class NettyServer {
     }
 
     public static void main(String[] args) throws Exception {
-	new NettyServer().bind();
+		new NettyServer().bind();
     }
 }

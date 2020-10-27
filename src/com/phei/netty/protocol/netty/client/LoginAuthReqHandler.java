@@ -69,8 +69,9 @@ public class LoginAuthReqHandler extends ChannelHandlerAdapter {
                 LOG.info("Login is ok : " + message);
                 ctx.fireChannelRead(msg);
             }
-        } else
+        } else {
             ctx.fireChannelRead(msg);
+        }
     }
 
     private NettyMessage buildLoginReq() {
